@@ -1,0 +1,9 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="80" fill="#1f2937"/>
+  <path d="M128 200C128 188.954 136.954 180 148 180H220C231.046 180 240 188.954 240 200V220C240 231.046 231.046 240 220 240H148C136.954 240 128 231.046 128 220V200Z" fill="#10b981"/>
+  <path d="M272 200C272 188.954 280.954 180 292 180H364C375.046 180 384 188.954 384 200V220C384 231.046 375.046 240 364 240H292C280.954 240 272 231.046 272 220V200Z" fill="#3b82f6"/>
+  <path d="M128 272C128 260.954 136.954 252 148 252H220C231.046 252 240 260.954 240 272V292C240 303.046 231.046 312 220 312H148C136.954 312 128 303.046 128 292V272Z" fill="#f59e0b"/>
+  <path d="M272 272C272 260.954 280.954 252 292 252H364C375.046 252 384 260.954 384 272V292C384 303.046 375.046 312 364 312H292C280.954 312 272 303.046 272 292V272Z" fill="#ef4444"/>
+  <text x="256" y="380" fill="white" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold">SIGMA</text>
+  <text x="256" y="420" fill="#9ca3af" text-anchor="middle" font-family="Arial, sans-serif" font-size="24">ACCOUNTS</text>
+</svg> 

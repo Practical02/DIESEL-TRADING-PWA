@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Piyappa Diesel Trading</string>
+    <string name="title_activity_main">Piyappa Diesel Trading</string>
+    <string name="package_name">com.piyappa.diesel</string>
+    <string name="custom_url_scheme">com.piyappa.diesel</string>
+</resources>

@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Client {
+  id        String    @id @default(cuid())
+  name      String
+  phone     String?
+  email     String?
+  address   String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  projects  Project[]
+  sales     Sale[]
+  payments  Payment[]
+}
+
+model Project {
+  id        String   @id @default(cuid())
+  name      String
+  clientId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  client    Client   @relation(fields: [clientId], references: [id])
+  sales     Sale[]
+}
+
+model Stock {
+  id            String   @id @default(cuid())
+  supplier      String
+  quantity      Float
+  purchase_cost Float
+  purchase_date DateTime
+  remarks       String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+}
+
+model Sale {
+  id            String   @id @default(cuid())
+  clientId      String
+  projectId     String
+  quantity      Float
+  unit_price    Float
+  total_amount  Float
+  sale_date     DateTime
+  remarks       String?
+  purchase_cost Float
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+  status        String
+  lpo           LPO?
+  payments      Payment[]
+  client        Client   @relation(fields: [clientId], references: [id])
+  project       Project  @relation(fields: [projectId], references: [id])
+}
+
+model LPO {
+  id        String   @id @default(cuid())
+  saleId    String   @unique
+  lpo_no    String
+  lpo_date  DateTime
+  status    String
+  remarks   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  invoice   Invoice?
+  sale      Sale     @relation(fields: [saleId], references: [id])
+}
+
+model Invoice {
+  id           String   @id @default(cuid())
+  lpoId        String   @unique
+  invoice_no   String
+  invoice_date DateTime
+  status       String
+  remarks      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
+  lpo          LPO      @relation(fields: [lpoId], references: [id])
+}
+
+model Payment {
+  id             String   @id @default(cuid())
+  clientId       String
+  saleId         String
+  amount         Float
+  payment_date   DateTime
+  payment_method String
+  reference_no   String?
+  remarks        String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now()) @updatedAt
+  client         Client   @relation(fields: [clientId], references: [id])
+  sale           Sale     @relation(fields: [saleId], references: [id])
+}
